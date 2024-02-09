@@ -29,8 +29,3 @@ After the extension is loaded, you can click on it in the extension menu to see 
 popup; it has information on how to use the extension
 
 ![screenshot of how to open the extention's popup](how-to-open-popup.png)
-
-### Important note
-After you load the extension the first time, you have to reload any page on which you
-want the extension to work! This is because the extension inserts a content script into
-any page on the matched domains, and before the content script is live, it won't work
