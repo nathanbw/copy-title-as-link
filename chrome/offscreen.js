@@ -17,61 +17,49 @@ async function handleRequest(request, sender, sendResponse) {
 }
 
 async function copyTitleAsLinkToClipboard(data) {
-    let textForLink = transformTitleText(data.url, data.title);
-    ///////////////////////// The way that definitely works
-    var copyFrom = document.createElement("a");
-    copyFrom.text = textForLink;
+    const copyFrom = document.createElement('a');
+    copyFrom.style.position = 'fixed';
+    copyFrom.style.opacity = 0;
+    // copyFrom.style = '';
+    copyFrom.text = data.title;
     copyFrom.href = data.url;
-    copyFrom.setAttribute('style', '');
-    document.body.appendChild(copyFrom);
-
-    // https://stackoverflow.com/questions/34191780/javascript-copy-string-to-clipboard-as-text-html
-    window.getSelection().removeAllRanges();
-    let range = document.createRange();
-    range.selectNode(copyFrom);
-    window.getSelection().addRange(range);
-    document.execCommand('copy');
-    window.getSelection().removeAllRanges();
-    document.body.removeChild(copyFrom);
-    ////////////////////////////////////
+    await copyDomElement(copyFrom);
 }
 
 async function copyTitleAsOrgModeLink(data) {
-    // TODO DRY this up; avoid duplication with copyTitleAsMarkdownLink
-    let textForLink = transformTitleText(data.url, data.title);
-    const linkOrgString = '[['  + data.url + ']['+ textForLink + ']]';
-    var copyFrom = document.createElement("textarea");
-    copyFrom.value = linkOrgString;
-    document.body.appendChild(copyFrom);
 
-    // https://stackoverflow.com/questions/34191780/javascript-copy-string-to-clipboard-as-text-html
-    window.getSelection().removeAllRanges();
-    let range = document.createRange();
-    range.selectNode(copyFrom);
-    window.getSelection().addRange(range);
-    document.execCommand('copy');
-    window.getSelection().removeAllRanges();
-
-    document.body.removeChild(copyFrom);
-
+    const linkOrgModeString = '[[' + data.url + '][' + data.title + ']]';
+    // As far as I can tell, Google Chrome will not allow us to use `navigator.clipboard.writeText` because
+    // this offscreen document will never have focus, so we have to invent `copyRawTextToClipboard` to do it
+    // the hard way:
+    //navigator.clipboard.writeText(linkOrgModeString);
+    copyRawTextToClipboard(linkOrgModeString);
 }
 
 async function copyTitleAsMarkdownLink(data) {
-    let textForLink = transformTitleText(data.url, data.title);
-    const linkMarkdownString = '[' + textForLink + '](' + data.url + ')';
-    var copyFrom = document.createElement("textarea");
-    copyFrom.value = linkMarkdownString;
-    document.body.appendChild(copyFrom);
+    const linkMarkdownString = '[' + data.title + '](' + data.url + ')';
+    // As far as I can tell, Google Chrome will not allow us to use `navigator.clipboard.writeText` because
+    // this offscreen document will never have focus, so we have to invent `copyRawTextToClipboard` to do it
+    // the hard way:
+    copyRawTextToClipboard(linkMarkdownString);
+}
 
-    // https://stackoverflow.com/questions/34191780/javascript-copy-string-to-clipboard-as-text-html
-    window.getSelection().removeAllRanges();
+async function copyDomElement(element) {
+    document.body.appendChild(element);
     let range = document.createRange();
-    range.selectNode(copyFrom);
+    range.selectNode(element);
     window.getSelection().addRange(range);
     document.execCommand('copy');
     window.getSelection().removeAllRanges();
+    document.body.removeChild(element);
+}
 
-    document.body.removeChild(copyFrom);
+async function copyRawTextToClipboard(text) {
+    const copyFrom = document.createElement('textarea');
+    copyFrom.style.position = 'fixed';
+    copyFrom.style.opacity = 0;
+    copyFrom.value = text;
+    await copyDomElement(copyFrom);
 }
 
 function transformTitleText(url, title) {
