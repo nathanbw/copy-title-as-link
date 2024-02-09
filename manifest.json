@@ -1,0 +1,45 @@
+{
+  "name": "Copy Page Title As Link",
+  "description": "Copies the current tab's title as a link to that page",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "clipboardWrite",
+    "contextMenus",
+    "tabs",
+    "offscreen"
+  ],
+  "action":{
+    "title": "Copy Page Title As Link",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "copy-title-as-link": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Copy the current tab's title as a link to that page"
+    },
+    "copy-title-as-org-mode-link": {
+      "suggested_key": {
+        "default": "Alt+Shift+E"
+      },
+      "description": "Copy the current tab's title as an org-mode-formatted link to that page"
+    },
+    "copy-title-as-markdown-link": {
+      "suggested_key": {
+        "default": "Alt+Shift+M"
+      },
+      "description": "Copy the current tab's title as a markdown-formatted link to that page"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
