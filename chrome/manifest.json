@@ -10,7 +10,7 @@
     "offscreen"
   ],
   "action":{
-    "title": "Copy Page Title As Link",
+    "default_title": "Copy Page Title As Link",
     "default_popup": "popup.html"
   },
   "background": {
