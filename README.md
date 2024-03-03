@@ -1,11 +1,27 @@
 # Copy Title As Link
-This repo houses a Chrome Extension that you can load into your browser
-to gain a context menu item and a shortcut key ("hotkey") that will
-copy the current page's title as a hyperlink to the page. Then, you can
-paste that link into Google Docs, Slack, Quip, or wherever else receives
-rich text to share links.
+This repo houses the source code to a browser extension that adds a keyboard shortcut
+(default: Alt-Shift-C / Option-Shift-C) that, when pressed, will copy a hyperlink to
+the currently-focused page into the clipboard. This link can then be pasted anywhere
+that accepts hyperlinks in text, like chat applications and office document
+applications.
+
+There are also hotkeys to copy links as Markdown text (default: Alt-Shift-M /
+Option-Shift-M) or org-mode text (default: Alt-Shift-E / Option-Shift-E).
+
+You can assign other hotkeys besides the defaults. In Firefox, you do that by
+navigating to `about:addons`, clicking the cog wheel in the top right and selecting
+"Manage Extension Shortcuts". In Chrome, the extension's popup should provide a link
+to the configuration page in Chrome that allows you to select other hotkeys.
 
 ## How to install
+### In Firefox
+The submission to the Firefox addons page is pending; when it has completed, I'll
+include a link to the page here. In the meantime, you can load this as a temporary
+addon, which I will unfortunately leave as an exercise for the reader (because the
+submission is pending, which will obviate the need to load this extension as a
+temporary extension)
+
+### In Chrome
 Clone this git repo (example below clones into
 `~/src/chrome-extensions/copy-title-as-link`):
 ```
@@ -21,11 +37,9 @@ corner of the page)
 
 ![screenshot of where to load unpacked extensions](load-unpacked-extension.png)
 
-Select the directory you cloned this repo into:
-
-![screenshot of selecting the unpacked extension directory](select-extension-directory.png)
+Select the `src/chrome` directory inside the directory you cloned this repo into.
 
 After the extension is loaded, you can click on it in the extension menu to see its
-popup; it has information on how to use the extension
+popup; it has the aforementioned link for customizing the hotkeys:
 
 ![screenshot of how to open the extention's popup](how-to-open-popup.png)
