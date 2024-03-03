@@ -1,14 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <title>Copy Title As Link</title>
     <link rel="stylesheet" href="popup.css">
-    <script src="popup.js" defer></script>
 </head>
 <body>
     <h1>Copy Title As Link</h1>
-    <p>This extension gives you a context menu that lets you copy the current pages title as a link to that page:
-        <img src="context-menu-full.png">
+    <p>
+        This extension provides a keyboard shortcut (default: Alt-Shift-C / Option-Shift-C) that, when pressed, will
+        copy a hyperlink to the currently-focused page into the clipboard. This link can then be pasted anywhere that
+        accepts hyperlinks in text, like chat applications and office document applications.
     </p>
-    <p>It also lets you define a hotkey that does the same thing (default: Alt-Shift-C)</p>
-    <button id="hotkey-link">Change hotkey</button>
+    <p>
+        There are also hotkeys to copy links as Markdown text (default: Alt-Shift-M / Option-Shift-M) or org-mode text
+        (default: Alt-Shift-E / Option-Shift-E).
+    </p>
+    <p>
+        You can assign other hotkeys besides the defaults; navigate to about:addons and click the cog wheel in the top
+        right and select "Manage Extension Shortcuts"
+    </p>
 </body>
 </html>

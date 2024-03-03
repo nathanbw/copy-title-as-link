@@ -1,15 +1,5 @@
 // "Command" listener -- handles the hotkey press:
 chrome.commands.onCommand.addListener(handleHotKey);
-// Context Menu listener -- handles the context menu action:
-chrome.contextMenus.onClicked.addListener(handleContextMenu);
-
-// Actually create the context menu (listener is above):
-chrome.contextMenus.create({
-    "title": "Copy Page Title and URL as link",
-    "id": "copy-title-as-link-menu",
-    "contexts": ["all"],
-    "type": "normal"
-});
 
 async function handleHotKey(command) {
     chrome.tabs.query({active: true, currentWindow: true}, async function (tabs) {
@@ -62,10 +52,5 @@ async function copyTitleAsLink(data) {
     document.body.removeChild(copyFrom);
 }
 
-async function handleContextMenu (info, tab) {
-    if (info.menuItemId === "copy-title-as-link-menu") {
-        // TODO do the right thing here
-    }
-}
 
 

@@ -3,19 +3,22 @@
   "description": "Copies the current tab's title as a link to that page",
   "version": "1.0",
   "manifest_version": 3,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{169231db-9db4-49ad-b31d-3014cd610028}"
+    }
+  },
   "permissions": [
     "clipboardWrite",
-    "contextMenus",
     "tabs"
   ],
-  "action":{
+  "action": {
     "default_title": "Copy Page Title As Link",
     "default_popup": "popup.html"
   },
   "background": {
     "scripts": ["background.js"]
   },
-
   "commands": {
     "copy-title-as-link": {
       "suggested_key": {
