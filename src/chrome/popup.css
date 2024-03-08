@@ -5,26 +5,3 @@ h1 {
 body {
     min-width: 25em;
 }
-
-button {
-    width: 100%;
-    margin: auto;
-    font-size: large;
-    display: inline;
-    background-color: #ffe77d;
-    border: none;
-    border-radius: 1em;
-    color: #374150;
-}
-
-button:hover {
-    background-color: #f1da76;
-}
-
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 100px 100px;
-    gap: 10px;
-}
-

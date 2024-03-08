@@ -1,15 +1,5 @@
 // "Command" listener -- handles the hotkey press:
 chrome.commands.onCommand.addListener(handleHotKey);
-// Context Menu listener -- handles the context menu action:
-chrome.contextMenus.onClicked.addListener(handleContextMenu);
-
-// Actually create the context menu (listener is above):
-chrome.contextMenus.create({
-    "title": "Copy Page Title and URL as link",
-    "id": "copy-title-as-link-menu",
-    "contexts": ["all"],
-    "type": "normal"
-});
 
 async function handleHotKey(command) {
     let messageToSend = "";
@@ -28,9 +18,9 @@ async function handleHotKey(command) {
 
     chrome.tabs.query({active: true, currentWindow: true}, async function (tabs) {
         let tab = tabs[0]
-        console.log("\tTab ID: " + tab.id);
-        console.log("\tTab Title: " + tab.title);
-        console.log("\tTab URL: " + tab.url);
+        // console.log("\tTab ID: " + tab.id);
+        // console.log("\tTab Title: " + tab.title);
+        // console.log("\tTab URL: " + tab.url);
         const offscreenDocumentPath = 'offscreen.html'
         // create offscreen document if it's not open already
         if (!(await hasOffscreenDocument(offscreenDocumentPath))) {
@@ -41,7 +31,7 @@ async function handleHotKey(command) {
             });
         }
         // Send message to offscreen document
-        console.log("\tmessageToSend: " + messageToSend);
+        // console.log("\tmessageToSend: " + messageToSend);
         chrome.runtime.sendMessage({
             message: messageToSend,
             data: {
@@ -64,11 +54,3 @@ async function hasOffscreenDocument(path) {
     }
     return false;
 }
-
-async function handleContextMenu (info, tab) {
-    if (info.menuItemId === "copy-title-as-link-menu") {
-        // TODO do the right thing here
-    }
-}
-
-

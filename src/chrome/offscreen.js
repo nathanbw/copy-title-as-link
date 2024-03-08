@@ -30,8 +30,7 @@ async function copyTitleAsOrgModeLink(data) {
 
     const linkOrgModeString = '[[' + data.url + '][' + data.title + ']]';
     // As far as I can tell, Google Chrome will not allow us to use `navigator.clipboard.writeText` because
-    // this offscreen document will never have focus, so we have to invent `copyRawTextToClipboard` to do it
-    // the hard way:
+    // this offscreen document will never have focus, so we use `copyRawTextToClipboard`:
     //navigator.clipboard.writeText(linkOrgModeString);
     copyRawTextToClipboard(linkOrgModeString);
 }
@@ -39,8 +38,8 @@ async function copyTitleAsOrgModeLink(data) {
 async function copyTitleAsMarkdownLink(data) {
     const linkMarkdownString = '[' + data.title + '](' + data.url + ')';
     // As far as I can tell, Google Chrome will not allow us to use `navigator.clipboard.writeText` because
-    // this offscreen document will never have focus, so we have to invent `copyRawTextToClipboard` to do it
-    // the hard way:
+    // this offscreen document will never have focus, so we use `copyRawTextToClipboard`:
+    //navigator.clipboard.writeText(linkMarkdownString);
     copyRawTextToClipboard(linkMarkdownString);
 }
 
