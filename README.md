@@ -42,4 +42,4 @@ Select the `src/chrome` directory inside the directory you cloned this repo into
 After the extension is loaded, you can click on it in the extension menu to see its
 popup; it has the aforementioned link for customizing the hotkeys:
 
-![screenshot of how to open the extention's popup](how-to-open-popup.png)
+![screenshot of how to open the extension's popup](how-to-open-popup.png)
