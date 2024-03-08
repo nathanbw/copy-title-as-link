@@ -15,13 +15,13 @@ to the configuration page in Chrome that allows you to select other hotkeys.
 
 ## How to install
 ### In Firefox
-The submission to the Firefox addons page is pending; when it has completed, I'll
-include a link to the page here. In the meantime, you can load this as a temporary
-addon, which I will unfortunately leave as an exercise for the reader (because the
-submission is pending, which will obviate the need to load this extension as a
-temporary extension)
+Install here: [Copy Page Title As Link – Get this Extension for 🦊 Firefox (en-US)](https://addons.mozilla.org/en-US/firefox/addon/copy-page-title-as-link/)
 
 ### In Chrome
+The extension has been submitted to the Chrome Web Store but is currently pending review. Once the extension is
+available in the web store, I'll update with a link to its page on the Chrome Web Store. In the meantime, you can clone
+this repo and add the extension to Chrome manually, using the steps outlined below:
+
 Clone this git repo (example below clones into
 `~/src/chrome-extensions/copy-title-as-link`):
 ```
